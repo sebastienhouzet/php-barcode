@@ -15,14 +15,19 @@ class EAN13 extends Barcode
    {
       global $PARITY_KEY;
 
-      // if $number.length() < 12 || >= 13  error
-
+      if (strlen($number) < 12 || strlen($number) > 13)
+        throw new Exception("You must use only 12 or 13 digit", 1);
+      
       // Get the parity key, which is based on the first digit.
       $this->_key = $PARITY_KEY[substr($number,0,1)];
 
       // The checksum is appended to the 12 digit string
-      $this->_checksum = ean_checksum($number);
-      $this->number = $number.$this->_checksum;
+      if (strlen($number)==12) {
+        $this->_checksum = ean_checksum($number);
+        $this->number = $number.$this->_checksum;
+      } else {
+        $this->number = $number;
+      }     
 
       $this->scale = $scale;
 
