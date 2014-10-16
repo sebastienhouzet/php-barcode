@@ -1,6 +1,10 @@
 php-barcode
 ================
 
+### News
+
+This version fix problem when you generate an EAN13 with 13 digits.
+
 ### About
 
 This is a re-working of [php-barcode](http://www.ashberg.de/php-barcode/ "php-barcode") by Folke Ashberg. Currently, my version only creates EAN-13 barcodes, however I plan to make the source modular to allow for additions of ISBN, Code 12, and others.
